@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LuxTest 隐私政策</title>
+    <meta
+      name="description"
+      content="LuxTest 隐私政策模板，适用于个人开发者版本的环境光测量应用。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Newsreader:opsz,wght@6..72,500;6..72,700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #04111b;
+        --bg-soft: rgba(7, 22, 34, 0.88);
+        --panel: rgba(11, 30, 44, 0.86);
+        --line: rgba(136, 205, 255, 0.18);
+        --line-strong: rgba(136, 205, 255, 0.32);
+        --text: #f2f8ff;
+        --text-soft: #b9cddd;
+        --accent: #84dfff;
+        --accent-soft: #abf1ff;
+        --success: #9af4d7;
+        --shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+        --radius: 28px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Manrope", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at 10% 10%, rgba(132, 223, 255, 0.14), transparent 32%),
+          radial-gradient(circle at 90% 12%, rgba(154, 244, 215, 0.1), transparent 26%),
+          linear-gradient(180deg, #06131e 0%, #091522 42%, #02080d 100%);
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background:
+          linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        background-size: 38px 38px;
+        mask-image: radial-gradient(circle at center, black 56%, transparent 100%);
+        pointer-events: none;
+      }
+
+      .shell {
+        position: relative;
+        width: min(1100px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0 56px;
+      }
+
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 18px;
+        color: var(--text-soft);
+        font-size: 14px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .topbar a {
+        color: var(--accent-soft);
+        text-decoration: none;
+      }
+
+      .hero {
+        overflow: hidden;
+        position: relative;
+        border: 1px solid var(--line);
+        border-radius: calc(var(--radius) + 8px);
+        background:
+          linear-gradient(145deg, rgba(17, 48, 71, 0.9), rgba(7, 18, 28, 0.98)),
+          var(--panel);
+        box-shadow: var(--shadow);
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        width: 220px;
+        height: 220px;
+        right: -60px;
+        top: -50px;
+        border-radius: 999px;
+        background: rgba(132, 223, 255, 0.18);
+        filter: blur(18px);
+      }
+
+      .hero-inner {
+        display: grid;
+        grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.7fr);
+      }
+
+      .hero-copy,
+      .hero-meta {
+        padding: 32px;
+      }
+
+      .hero-copy {
+        border-right: 1px solid var(--line);
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 18px;
+        color: var(--accent-soft);
+        font-size: 12px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 34px;
+        height: 1px;
+        background: currentColor;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        font-family: "Newsreader", serif;
+        letter-spacing: -0.03em;
+      }
+
+      h1 {
+        max-width: 9ch;
+        font-size: clamp(40px, 6.6vw, 74px);
+        line-height: 0.95;
+      }
+
+      .lead {
+        max-width: 620px;
+        margin: 18px 0 0;
+        color: var(--text-soft);
+        font-size: 17px;
+        line-height: 1.8;
+      }
+
+      .hero-meta {
+        display: grid;
+        gap: 14px;
+        align-content: center;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent);
+      }
+
+      .meta-item {
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .meta-label {
+        margin-bottom: 8px;
+        color: var(--text-soft);
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .meta-value {
+        font-size: 18px;
+        font-weight: 800;
+      }
+
+      .sections {
+        display: grid;
+        gap: 18px;
+        margin-top: 18px;
+      }
+
+      .section {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--bg-soft);
+        box-shadow: var(--shadow);
+      }
+
+      .section-header {
+        padding: 24px 28px 0;
+      }
+
+      .section-body {
+        padding: 18px 28px 28px;
+      }
+
+      h2 {
+        font-size: 30px;
+      }
+
+      h3 {
+        margin-bottom: 12px;
+        font-size: 24px;
+      }
+
+      p,
+      li {
+        color: var(--text-soft);
+        line-height: 1.85;
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 18px;
+      }
+
+      li + li {
+        margin-top: 10px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .mini-card {
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .mini-card strong {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--success);
+        font-size: 13px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .note {
+        margin-top: 16px;
+        padding: 18px;
+        border: 1px solid var(--line-strong);
+        border-radius: 20px;
+        background: rgba(132, 223, 255, 0.06);
+      }
+
+      code {
+        padding: 2px 7px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--accent-soft);
+        font-family: inherit;
+        font-size: 13px;
+      }
+
+      footer {
+        margin-top: 18px;
+        padding: 18px 4px 0;
+        color: rgba(185, 205, 221, 0.84);
+        font-size: 13px;
+        line-height: 1.7;
+      }
+
+      @media (max-width: 900px) {
+        .hero-inner,
+        .grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-copy {
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+      }
+
+      @media (max-width: 640px) {
+        .shell {
+          width: min(100% - 20px, 1100px);
+          padding-top: 18px;
+          padding-bottom: 32px;
+        }
+
+        .hero-copy,
+        .hero-meta,
+        .section-header,
+        .section-body {
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+
+        h1 {
+          font-size: 40px;
+        }
+
+        h2 {
+          font-size: 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <div class="topbar">
+        <span>LuxTest / 隐私政策</span>
+        <a href="./support.html">查看支持中心</a>
+      </div>
+
+      <section class="hero">
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <span class="eyebrow">Privacy Policy</span>
+            <h1>LuxTest 隐私政策</h1>
+            <p class="lead">
+              LuxTest 以本地处理为主要原则，用于帮助用户快速判断环境光照度。此页面可直接作为 App Store
+              Connect 中的 <code>Privacy Policy URL</code> 使用。
+            </p>
+          </div>
+          <aside class="hero-meta">
+            <div class="meta-item">
+              <div class="meta-label">适用对象</div>
+              <div class="meta-value">个人开发者版本 / 移动端应用</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-label">生效日期</div>
+              <div class="meta-value">2026-04-08</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-label">联系邮箱</div>
+              <div class="meta-value">xywang279279@gmail.com</div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="sections">
+        <article class="section">
+          <div class="section-header">
+            <span class="eyebrow">01 / Data Scope</span>
+            <h2>我们处理哪些信息</h2>
+          </div>
+          <div class="section-body">
+            <div class="grid">
+              <div class="mini-card">
+                <strong>iOS</strong>
+                <p>苹果设备上，应用可能请求相机权限，用于读取曝光参数并换算近似 Lux。</p>
+              </div>
+              <div class="mini-card">
+                <strong>Android</strong>
+                <p>安卓设备上，应用会读取环境光传感器，用于测量实际照度值。</p>
+              </div>
+            </div>
+            <div class="note">
+              <p>
+                应用默认不要求账号注册，也不以内建服务器为基础处理测量记录。校准参数、测量历史等数据主要保存在用户设备本地。
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <article class="section">
+          <div class="section-header">
+            <span class="eyebrow">02 / Usage</span>
+            <h2>这些信息如何被使用</h2>
+          </div>
+          <div class="section-body">
+            <ul>
+              <li>完成环境光照度测量，并展示 lux 数值、等级判断和相关建议。</li>
+              <li>在 iPhone 设备上，根据曝光参数展示近似 Lux 和趋势变化。</li>
+              <li>生成会话级统计结果，便于用户在本地查看或主动导出。</li>
+              <li>保存校准偏好与历史记录，减少用户重复设置。</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="section">
+          <div class="section-header">
+            <span class="eyebrow">03 / Local Storage</span>
+            <h2>本地存储与导出</h2>
+          </div>
+          <div class="section-body">
+            <p>
+              测量记录、校准参数等信息默认保存在本地设备中。导出功能仅在用户主动触发时执行，LuxTest
+              不会默认将这些记录上传到开发者服务器。
+            </p>
+            <p>
+              如果用户将导出的文件通过邮件、网盘、聊天工具或其他方式分享给第三方，该文件后续的保存、传播和使用行为将由用户自行决定。
+            </p>
+          </div>
+        </article>
+
+        <article class="section">
+          <div class="section-header">
+            <span class="eyebrow">04 / Non-Collection</span>
+            <h2>我们不会做什么</h2>
+          </div>
+          <div class="section-body">
+            <ul>
+              <li>不会默认将传感器数据上传到开发者服务器。</li>
+              <li>不会出售或共享用户数据给第三方广告网络。</li>
+              <li>不会默认采集与身份直接绑定的敏感个人信息。</li>
+              <li>不会默认集成行为跟踪或广告分析 SDK。</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="section">
+          <div class="section-header">
+            <span class="eyebrow">05 / Contact</span>
+            <h2>联系开发者</h2>
+          </div>
+          <div class="section-body">
+            <p>
+              如果你对本隐私政策有疑问，或希望就应用内的本地数据处理方式进行咨询，请发送邮件至
+              <strong>xywang279279@gmail.com</strong>。
+            </p>
+            <div class="note">
+              <p>
+                上线前请将本页中的示例邮箱、日期和开发者署名替换为真实信息，并与 App Store Connect
+                中填写的隐私政策链接保持一致。
+              </p>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <footer>
+        本页面为 LuxTest 个人开发者版本隐私政策模板。正式上线前，请根据你的实际数据流、接入 SDK、导出方式和公开联系信息进行最终复核。
+      </footer>
+    </main>
+  </body>
+</html>

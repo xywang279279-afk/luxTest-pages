@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LuxTest 支持中心</title>
+    <meta
+      name="description"
+      content="LuxTest 个人开发者版本支持页面，包含联系邮箱、问题反馈与基础使用说明。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Newsreader:opsz,wght@6..72,500;6..72,700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #07131f;
+        --bg-soft: rgba(9, 26, 40, 0.84);
+        --panel: rgba(12, 35, 53, 0.82);
+        --panel-strong: rgba(10, 29, 45, 0.94);
+        --line: rgba(142, 208, 255, 0.18);
+        --line-strong: rgba(142, 208, 255, 0.34);
+        --text: #eff7ff;
+        --text-soft: #b6cadc;
+        --accent: #77d4ff;
+        --accent-strong: #a5eeff;
+        --warning: #ffd98a;
+        --shadow: 0 24px 60px rgba(0, 0, 0, 0.34);
+        --radius: 28px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Manrope", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top left, rgba(119, 212, 255, 0.16), transparent 34%),
+          radial-gradient(circle at top right, rgba(120, 255, 214, 0.12), transparent 26%),
+          linear-gradient(180deg, #07131f 0%, #091724 48%, #040b12 100%);
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        background-size: 34px 34px;
+        mask-image: radial-gradient(circle at center, black 52%, transparent 100%);
+        pointer-events: none;
+      }
+
+      .shell {
+        position: relative;
+        width: min(1100px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0 56px;
+      }
+
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 18px;
+        color: var(--text-soft);
+        font-size: 14px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .topbar a {
+        color: var(--accent-strong);
+        text-decoration: none;
+      }
+
+      .hero {
+        overflow: hidden;
+        position: relative;
+        border: 1px solid var(--line);
+        border-radius: calc(var(--radius) + 8px);
+        background:
+          linear-gradient(145deg, rgba(21, 56, 81, 0.88), rgba(7, 18, 28, 0.98)),
+          var(--panel-strong);
+        box-shadow: var(--shadow);
+      }
+
+      .hero::before,
+      .hero::after {
+        content: "";
+        position: absolute;
+        border-radius: 999px;
+        filter: blur(18px);
+        opacity: 0.5;
+      }
+
+      .hero::before {
+        width: 180px;
+        height: 180px;
+        top: -24px;
+        right: -40px;
+        background: rgba(119, 212, 255, 0.26);
+      }
+
+      .hero::after {
+        width: 140px;
+        height: 140px;
+        left: -30px;
+        bottom: -40px;
+        background: rgba(116, 255, 208, 0.16);
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.8fr);
+      }
+
+      .hero-copy,
+      .hero-side {
+        padding: 32px;
+      }
+
+      .hero-copy {
+        border-right: 1px solid var(--line);
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 18px;
+        color: var(--accent-strong);
+        font-size: 12px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 34px;
+        height: 1px;
+        background: currentColor;
+      }
+
+      h1,
+      h2 {
+        margin: 0;
+        font-family: "Newsreader", serif;
+        letter-spacing: -0.03em;
+      }
+
+      h1 {
+        max-width: 10ch;
+        font-size: clamp(42px, 7vw, 78px);
+        line-height: 0.94;
+      }
+
+      .lead {
+        max-width: 580px;
+        margin: 18px 0 0;
+        color: var(--text-soft);
+        font-size: 17px;
+        line-height: 1.8;
+      }
+
+      .hero-side {
+        display: grid;
+        align-content: space-between;
+        gap: 20px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent);
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        width: fit-content;
+        padding: 8px 12px;
+        border: 1px solid var(--line-strong);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--accent-strong);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .stat-card {
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .stat-label {
+        margin-bottom: 10px;
+        color: var(--text-soft);
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .stat-value {
+        font-size: 24px;
+        font-weight: 800;
+      }
+
+      .content-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+        gap: 18px;
+        margin-top: 18px;
+      }
+
+      .panel {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--bg-soft);
+        box-shadow: var(--shadow);
+      }
+
+      .panel-header {
+        padding: 26px 28px 0;
+      }
+
+      .panel-body {
+        padding: 20px 28px 28px;
+      }
+
+      .panel-header p,
+      .panel-body p,
+      .panel-body li,
+      .muted {
+        color: var(--text-soft);
+        line-height: 1.8;
+      }
+
+      .panel-header p {
+        margin: 12px 0 0;
+      }
+
+      h2 {
+        font-size: 30px;
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 18px;
+      }
+
+      li + li {
+        margin-top: 10px;
+      }
+
+      .contact-card {
+        display: grid;
+        gap: 14px;
+      }
+
+      .contact-item {
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .contact-item strong,
+      .contact-item a {
+        display: block;
+        word-break: break-word;
+      }
+
+      .contact-item strong {
+        margin-bottom: 8px;
+        font-size: 14px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--accent-strong);
+      }
+
+      .contact-item a {
+        color: var(--text);
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      .callout {
+        margin-top: 16px;
+        padding: 18px;
+        border: 1px solid rgba(255, 217, 138, 0.28);
+        border-radius: 20px;
+        background: rgba(255, 217, 138, 0.08);
+      }
+
+      .callout strong {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--warning);
+        font-size: 13px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .stack {
+        display: grid;
+        gap: 18px;
+      }
+
+      .tip-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .tip-card,
+      .qa-item {
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .tip-card strong,
+      .qa-item strong {
+        display: block;
+        margin-bottom: 10px;
+        color: var(--text);
+        font-size: 17px;
+      }
+
+      .tip-card p,
+      .qa-item p {
+        margin: 0;
+        color: var(--text-soft);
+        line-height: 1.8;
+      }
+
+      .step-list {
+        display: grid;
+        gap: 12px;
+      }
+
+      .step-item {
+        display: grid;
+        grid-template-columns: 42px minmax(0, 1fr);
+        gap: 14px;
+        align-items: start;
+        padding: 16px 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .step-item:first-child {
+        border-top: 0;
+        padding-top: 0;
+      }
+
+      .step-num {
+        display: grid;
+        place-items: center;
+        width: 42px;
+        height: 42px;
+        border-radius: 999px;
+        border: 1px solid var(--line-strong);
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--accent-strong);
+        font-size: 14px;
+        font-weight: 800;
+      }
+
+      .step-copy strong {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 16px;
+        color: var(--text);
+      }
+
+      .step-copy p {
+        margin: 0;
+      }
+
+      footer {
+        margin-top: 18px;
+        padding: 18px 4px 0;
+        color: rgba(182, 202, 220, 0.82);
+        font-size: 13px;
+        line-height: 1.7;
+      }
+
+      code {
+        padding: 2px 7px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--accent-strong);
+        font-family: inherit;
+        font-size: 13px;
+      }
+
+      @media (max-width: 900px) {
+        .hero-grid,
+        .content-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .tip-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-copy {
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .topbar {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .shell {
+          width: min(100% - 20px, 1100px);
+          padding-top: 18px;
+          padding-bottom: 32px;
+        }
+
+        .hero-copy,
+        .hero-side,
+        .panel-header,
+        .panel-body {
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+
+        h1 {
+          font-size: 42px;
+        }
+
+        h2 {
+          font-size: 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <div class="topbar">
+        <span>LuxTest / 支持中心</span>
+        <a href="./privacy-policy.html">查看隐私政策</a>
+      </div>
+
+      <section class="hero">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <span class="eyebrow">个人开发者版本</span>
+            <h1>LuxTest 支持中心</h1>
+            <p class="lead">
+              这里提供 LuxTest 的公开支持信息、常见使用问题与快速测量建议，可直接作为 App Store 的
+              <code>Support URL</code> 使用。
+            </p>
+          </div>
+          <aside class="hero-side">
+            <span class="badge">Support URL Ready</span>
+            <div class="stat-card">
+              <div class="stat-label">支持范围</div>
+              <div class="stat-value">使用说明 / 问题反馈 / 隐私咨询</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">维护方式</div>
+              <div class="stat-value">个人开发者直接响应</div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="content-grid">
+        <article class="panel">
+          <div class="panel-header">
+            <span class="eyebrow">Support Scope</span>
+            <h2>用户可以通过这里获得什么</h2>
+            <p>这里不仅用于联系开发者，也直接回答 LuxTest 最常见的使用问题。</p>
+          </div>
+          <div class="panel-body">
+            <ul>
+              <li>测量结果异常、页面显示错误、导出失败等产品问题反馈。</li>
+              <li>对光照测量方式、平台差异、权限说明和读数解释的使用咨询。</li>
+              <li>对隐私政策、本地数据处理方式、删除历史记录的相关问题。</li>
+              <li>功能改进建议，例如阈值、导出格式、校准流程优化。</li>
+            </ul>
+
+            <div class="callout">
+              <strong>结果说明</strong>
+              <p class="muted">
+                Android 设备优先读取环境光传感器；iPhone 设备通过后置相机曝光参数换算近似 Lux。iPhone
+                结果适合做趋势观察和粗略场景比较，不建议替代专业照度计。
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <aside class="panel">
+          <div class="panel-header">
+            <span class="eyebrow">Contact</span>
+            <h2>联系信息</h2>
+            <p>这部分建议与 App Store Connect 中的公开支持信息保持一致。</p>
+          </div>
+          <div class="panel-body contact-card">
+            <div class="contact-item">
+              <strong>支持邮箱</strong>
+              <a href="mailto:xywang279279@gmail.com">xywang279279@gmail.com</a>
+            </div>
+            <div class="contact-item">
+              <strong>隐私相关邮箱</strong>
+              <a href="mailto:xywang279279@gmail.com">xywang279279@gmail.com</a>
+            </div>
+            <div class="contact-item">
+              <strong>开发者署名</strong>
+              <span class="muted">Wang Xiaoyan</span>
+            </div>
+            <div class="contact-item">
+              <strong>最后更新时间</strong>
+              <span class="muted">2026-04-09</span>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="content-grid">
+        <article class="panel">
+          <div class="panel-header">
+            <span class="eyebrow">Quick Start</span>
+            <h2>第一次使用怎么测</h2>
+            <p>如果你的目标是判断一个区域适不适合阅读、办公或拍摄，可以按下面步骤进行。</p>
+          </div>
+          <div class="panel-body">
+            <div class="step-list">
+              <div class="step-item">
+                <div class="step-num">1</div>
+                <div class="step-copy">
+                  <strong>先对准被测区域，不要直接对准光源</strong>
+                  <p>更适合朝向桌面、书本、工位、地面或房间主体区域，而不是灯泡、太阳或强反光点。</p>
+                </div>
+              </div>
+              <div class="step-item">
+                <div class="step-num">2</div>
+                <div class="step-copy">
+                  <strong>点击开始采集，保持手机姿态稳定</strong>
+                  <p>建议至少保持 3 到 5 秒，避免频繁晃动、遮挡或边走边测。</p>
+                </div>
+              </div>
+              <div class="step-item">
+                <div class="step-num">3</div>
+                <div class="step-copy">
+                  <strong>优先看平均值和等级</strong>
+                  <p>单个瞬时数值容易波动，平均值、最低值和最高值更能反映当前场景的真实状态。</p>
+                </div>
+              </div>
+              <div class="step-item">
+                <div class="step-num">4</div>
+                <div class="step-copy">
+                  <strong>需要对比时，用同一姿势测两个位置</strong>
+                  <p>尽量保持相同高度、角度和停留时间，再比较结果，参考意义会更强。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <aside class="stack">
+          <article class="panel">
+            <div class="panel-header">
+              <span class="eyebrow">Platform</span>
+              <h2>平台差异</h2>
+            </div>
+            <div class="panel-body">
+              <div class="tip-grid">
+                <div class="tip-card">
+                  <strong>Android</strong>
+                  <p>优先读取环境光传感器，更适合看当前环境的实时照度。重点是不要遮挡传感器区域。</p>
+                </div>
+                <div class="tip-card">
+                  <strong>iPhone</strong>
+                  <p>通过后置相机曝光参数换算近似 Lux，更适合趋势观察和粗略场景对比。</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <span class="eyebrow">Export</span>
+              <h2>历史记录与导出</h2>
+            </div>
+            <div class="panel-body">
+              <p>每次停止采样后，LuxTest 会自动生成一条本地记录。你可以查看平均值、最高值、最低值和时长，并导出为结构化数据或表格数据。</p>
+            </div>
+          </article>
+        </aside>
+      </section>
+
+      <section class="content-grid">
+        <article class="panel">
+          <div class="panel-header">
+            <span class="eyebrow">FAQ</span>
+            <h2>常见使用问题</h2>
+          </div>
+          <div class="panel-body stack">
+            <div class="qa-item">
+              <strong>需要直接对准灯泡或太阳吗？</strong>
+              <p>通常不需要。更建议朝向你真正关心的区域。直接对准强光源时，局部过曝和自动曝光调整都会让结果更容易偏高或波动。</p>
+            </div>
+            <div class="qa-item">
+              <strong>为什么刚开始测量时数值变化比较快？</strong>
+              <p>开始采样后，设备还在适应当前环境。建议先等待 3 到 5 秒，再重点观察平均值和等级。</p>
+            </div>
+            <div class="qa-item">
+              <strong>为什么 iPhone 和 Android 数字不完全一样？</strong>
+              <p>两者的数据来源不同。Android 更依赖环境光传感器，iPhone 则是基于相机曝光参数换算近似 Lux，所以更适合做趋势和相对对比。</p>
+            </div>
+            <div class="qa-item">
+              <strong>什么情况下结果会偏差更大？</strong>
+              <p>边走边测、频繁转动手机、直对灯泡、强背光、镜头被遮挡，或者画面主体变化很大时，结果都更容易波动。</p>
+            </div>
+          </div>
+        </article>
+
+        <aside class="panel">
+          <div class="panel-header">
+            <span class="eyebrow">Reminder</span>
+            <h2>使用提醒</h2>
+          </div>
+          <div class="panel-body">
+            <ul>
+              <li>优先使用真机测试，尤其是 iPhone。</li>
+              <li>同一场景建议连续采样几秒，不要只看瞬时值。</li>
+              <li>跨设备比较时，更推荐看趋势和区间，不要要求绝对一致。</li>
+              <li>如需专业验收或精密检测，请使用经过校准的专业照度计。</li>
+            </ul>
+          </div>
+        </aside>
+      </section>
+
+      <footer>
+        本页面可直接托管为 LuxTest 的公开支持页，并在 App Store Connect 中填写为
+        <code>Support URL</code>。如后续功能、联系邮箱或隐私说明发生变化，建议同步更新本页与隐私政策页。
+      </footer>
+    </main>
+  </body>
+</html>
