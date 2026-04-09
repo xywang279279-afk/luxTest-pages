@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LuxTest Pages</title>
+    <meta
+      name="description"
+      content="LuxTest GitHub Pages 首页，包含支持中心、隐私政策和 GitHub Pages 发布说明。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Newsreader:opsz,wght@6..72,500;6..72,700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #06111b;
+        --bg-soft: rgba(9, 23, 35, 0.84);
+        --panel: rgba(12, 33, 48, 0.86);
+        --panel-strong: rgba(10, 29, 44, 0.94);
+        --line: rgba(136, 208, 255, 0.2);
+        --line-strong: rgba(136, 208, 255, 0.34);
+        --text: #eff8ff;
+        --text-soft: #b8cede;
+        --accent: #7ad8ff;
+        --accent-soft: #b4f2ff;
+        --success: #9af2d5;
+        --warning: #ffd58a;
+        --shadow: 0 24px 60px rgba(0, 0, 0, 0.32);
+        --radius: 28px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Manrope", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at 0% 0%, rgba(122, 216, 255, 0.14), transparent 30%),
+          radial-gradient(circle at 100% 0%, rgba(154, 242, 213, 0.12), transparent 28%),
+          linear-gradient(180deg, #07131e 0%, #081521 45%, #03090f 100%);
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        background-size: 36px 36px;
+        mask-image: radial-gradient(circle at center, black 54%, transparent 100%);
+        pointer-events: none;
+      }
+
+      .shell {
+        position: relative;
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0 56px;
+      }
+
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 18px;
+        color: var(--text-soft);
+        font-size: 14px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .topnav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+
+      .topbar a {
+        color: var(--accent-soft);
+        text-decoration: none;
+      }
+
+      .hero {
+        overflow: hidden;
+        position: relative;
+        border: 1px solid var(--line);
+        border-radius: calc(var(--radius) + 8px);
+        background:
+          linear-gradient(145deg, rgba(18, 48, 71, 0.9), rgba(7, 18, 28, 0.98)),
+          var(--panel-strong);
+        box-shadow: var(--shadow);
+      }
+
+      .hero::before,
+      .hero::after {
+        content: "";
+        position: absolute;
+        border-radius: 999px;
+        filter: blur(20px);
+        opacity: 0.5;
+      }
+
+      .hero::before {
+        width: 220px;
+        height: 220px;
+        right: -60px;
+        top: -40px;
+        background: rgba(122, 216, 255, 0.22);
+      }
+
+      .hero::after {
+        width: 160px;
+        height: 160px;
+        left: -30px;
+        bottom: -50px;
+        background: rgba(154, 242, 213, 0.14);
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.45fr) minmax(300px, 0.8fr);
+      }
+
+      .hero-copy,
+      .hero-side {
+        padding: 32px;
+      }
+
+      .hero-copy {
+        border-right: 1px solid var(--line);
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 18px;
+        color: var(--accent-soft);
+        font-size: 12px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 34px;
+        height: 1px;
+        background: currentColor;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        font-family: "Newsreader", serif;
+        letter-spacing: -0.03em;
+      }
+
+      h1 {
+        max-width: 10ch;
+        font-size: clamp(44px, 7vw, 80px);
+        line-height: 0.94;
+      }
+
+      .lead {
+        max-width: 620px;
+        margin: 18px 0 0;
+        color: var(--text-soft);
+        font-size: 17px;
+        line-height: 1.8;
+      }
+
+      .hero-side {
+        display: grid;
+        align-content: space-between;
+        gap: 18px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent);
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        width: fit-content;
+        padding: 8px 12px;
+        border: 1px solid var(--line-strong);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--accent-soft);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .stat-card {
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .stat-label {
+        margin-bottom: 10px;
+        color: var(--text-soft);
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .stat-value {
+        font-size: 24px;
+        font-weight: 800;
+      }
+
+      .content-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+        gap: 18px;
+        margin-top: 18px;
+      }
+
+      .panel {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--bg-soft);
+        box-shadow: var(--shadow);
+      }
+
+      .panel-header {
+        padding: 26px 28px 0;
+      }
+
+      .panel-body {
+        padding: 20px 28px 28px;
+      }
+
+      .panel-header p,
+      .panel-body p,
+      .panel-body li,
+      .muted {
+        color: var(--text-soft);
+        line-height: 1.8;
+      }
+
+      .panel-header p {
+        margin: 12px 0 0;
+      }
+
+      h2 {
+        font-size: 30px;
+      }
+
+      h3 {
+        font-size: 20px;
+      }
+
+      .link-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .link-card {
+        display: grid;
+        gap: 12px;
+        padding: 20px;
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .link-card strong {
+        font-size: 18px;
+      }
+
+      .link-card a {
+        width: fit-content;
+        padding: 10px 14px;
+        border: 1px solid var(--line-strong);
+        border-radius: 999px;
+        color: var(--accent-soft);
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 18px;
+      }
+
+      li + li {
+        margin-top: 10px;
+      }
+
+      .note {
+        margin-top: 16px;
+        padding: 18px;
+        border: 1px solid rgba(255, 213, 138, 0.3);
+        border-radius: 20px;
+        background: rgba(255, 213, 138, 0.08);
+      }
+
+      .note strong {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--warning);
+        font-size: 13px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      code {
+        padding: 2px 7px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--accent-soft);
+        font-family: inherit;
+        font-size: 13px;
+      }
+
+      footer {
+        margin-top: 18px;
+        padding: 18px 4px 0;
+        color: rgba(184, 206, 222, 0.84);
+        font-size: 13px;
+        line-height: 1.7;
+      }
+
+      @media (max-width: 900px) {
+        .hero-grid,
+        .content-grid,
+        .link-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-copy {
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .topbar {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .shell {
+          width: min(100% - 20px, 1120px);
+          padding-top: 18px;
+          padding-bottom: 32px;
+        }
+
+        .hero-copy,
+        .hero-side,
+        .panel-header,
+        .panel-body {
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+
+        h1 {
+          font-size: 42px;
+        }
+
+        h2 {
+          font-size: 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <div class="topbar">
+        <span>LuxTest / GitHub Pages</span>
+        <div class="topnav">
+          <a href="./support.html">支持中心</a>
+          <a href="./privacy-policy.html">隐私政策</a>
+        </div>
+      </div>
+
+      <section class="hero">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <span class="eyebrow">Docs Ready</span>
+            <h1>LuxTest Pages 首页</h1>
+            <p class="lead">
+              这个 <code>/docs</code> 目录已经整理成 GitHub Pages 可直接发布的结构。把仓库推到 GitHub
+              后，在仓库设置中选择 <code>Deploy from a branch</code>，分支选 <code>main</code>，目录选
+              <code>/docs</code>，就可以直接上线。
+            </p>
+          </div>
+          <aside class="hero-side">
+            <span class="badge">GitHub Pages Ready</span>
+            <div class="stat-card">
+              <div class="stat-label">主页地址</div>
+              <div class="stat-value">/docs/index.html</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">公开页面</div>
+              <div class="stat-value">支持中心 / 隐私政策</div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="content-grid">
+        <article class="panel">
+          <div class="panel-header">
+            <span class="eyebrow">Public Pages</span>
+            <h2>现在可以直接发布的页面</h2>
+            <p>这两张页面已经是独立 HTML，部署后可以直接填到 App Store Connect。</p>
+          </div>
+          <div class="panel-body">
+            <div class="link-grid">
+              <div class="link-card">
+                <strong>支持中心</strong>
+                <p>用于填写 `Support URL`，包含联系邮箱、常见问题和基础使用说明。</p>
+                <a href="./support.html">打开 support.html</a>
+              </div>
+              <div class="link-card">
+                <strong>隐私政策</strong>
+                <p>用于填写 `Privacy Policy URL`，包含本地存储、权限说明和隐私声明。</p>
+                <a href="./privacy-policy.html">打开 privacy-policy.html</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <aside class="panel">
+          <div class="panel-header">
+            <span class="eyebrow">Checklist</span>
+            <h2>上线前最后检查</h2>
+          </div>
+          <div class="panel-body">
+            <ul>
+              <li>确认支持邮箱和隐私邮箱都是真实可用的。</li>
+              <li>确认页面上的开发者署名与 App Store 显示名称一致。</li>
+              <li>确认日期、隐私描述和最终二进制的数据流保持一致。</li>
+              <li>发布后打开线上链接，检查手机端是否能正常访问。</li>
+            </ul>
+
+            <div class="note">
+              <strong>提示</strong>
+              <p class="muted">
+                如果仓库名不是用户主页仓库，GitHub Pages 地址通常会带上仓库名，例如
+                <code>https://YOUR_NAME.github.io/REPO_NAME/</code>。
+              </p>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <footer>
+        这个首页只是 GitHub Pages 的入口页。真正填给 App Store Connect 的仍然建议是
+        <code>/support.html</code> 和 <code>/privacy-policy.html</code> 两个公开链接。
+      </footer>
+    </main>
+  </body>
+</html>

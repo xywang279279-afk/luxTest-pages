@@ -82,6 +82,12 @@
         text-decoration: none;
       }
 
+      .topnav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+
       .hero {
         overflow: hidden;
         position: relative;
@@ -456,7 +462,10 @@
     <main class="shell">
       <div class="topbar">
         <span>LuxTest / 支持中心</span>
-        <a href="./privacy-policy.html">查看隐私政策</a>
+        <div class="topnav">
+          <a href="./index.html">首页</a>
+          <a href="./privacy-policy.html">隐私政策</a>
+        </div>
       </div>
 
       <section class="hero">
