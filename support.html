@@ -6,7 +6,7 @@
     <title>LuxTest 支持中心</title>
     <meta
       name="description"
-      content="LuxTest 官方支持中心，提供环境光照度测量使用说明、常见问题、平台差异、故障反馈和联系邮箱。"
+      content="LuxTest 官方支持中心，提供学习环境照度检测、首页功能、学习照度等级、平台差异、常见问题和联系邮箱。"
     />
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#f6f8f3" />
@@ -22,7 +22,7 @@
     <meta property="og:title" content="LuxTest 支持中心" />
     <meta
       property="og:description"
-      content="获取 LuxTest 使用建议、常见问题解答、隐私咨询和问题反馈方式。"
+      content="获取 LuxTest 学习环境检测流程、首页功能说明、常见问题解答和问题反馈方式。"
     />
     <meta
       property="og:url"
@@ -67,7 +67,7 @@
           <span class="eyebrow">Support</span>
           <h1 id="support-title">LuxTest 支持中心</h1>
           <p class="lead">
-            这里提供 LuxTest 的公开支持信息、使用建议、常见问题和问题反馈方式，可作为应用商店中的
+            这里提供 LuxTest 新版首页的功能说明、学习环境检测建议、常见问题和问题反馈方式，可作为应用商店中的
             Support URL 使用。
           </p>
           <div class="hero-actions">
@@ -120,11 +120,11 @@
         <div class="grid three">
           <article class="tile">
             <strong>测量问题</strong>
-            <p>读数异常、数值波动、无法开始采集、传感器不可用或 iPhone 曝光估算失败。</p>
+            <p>无法开始检测、桌面照度结果异常、采集时间过短、环境过暗、传感器不可用或 iPhone 曝光估算失败。</p>
           </article>
           <article class="tile">
             <strong>历史与导出</strong>
-            <p>本地记录查看、JSON/CSV 导出、单条记录删除和清空全部记录相关问题。</p>
+            <p>测试记录查看、平均/最高/最低统计、JSON/CSV 单条导出、单条删除和清空全部记录相关问题。</p>
           </article>
           <article class="tile">
             <strong>隐私咨询</strong>
@@ -140,33 +140,77 @@
             <h2 id="quick-start-title">推荐测量流程</h2>
           </div>
           <p>
-            LuxTest 更适合判断一个区域是否适合阅读、办公或拍摄，而不是测量灯泡本身有多亮。
+            新版首页面向孩子学习场景，重点判断当前书桌是否适合阅读和写字，而不是测量灯泡本身有多亮。
           </p>
         </div>
         <div class="steps">
           <article class="step">
             <div>
-              <h3>朝向被测区域</h3>
-              <p>测桌面、书本、工位或房间主体区域，不要直接对准灯泡、太阳或强反光点。</p>
+              <h3>放到作业本位置</h3>
+              <p>把手机放到孩子实际写字、阅读的位置，尽量贴近真实学习姿态，不要直接对准灯泡、太阳或强反光点。</p>
             </div>
           </article>
           <article class="step">
             <div>
-              <h3>保持几秒稳定</h3>
-              <p>点击开始采集后，建议等待 3 到 5 秒，避免边走边测、频繁转动或遮挡镜头/传感器。</p>
+              <h3>点击开始检测并保持稳定</h3>
+              <p>首页仪表盘会进入“检测中”状态。请保持手机位置稳定，至少持续 2 到 3 秒，避免边走边测、频繁转动或遮挡镜头/传感器。</p>
             </div>
           </article>
           <article class="step">
             <div>
-              <h3>优先看平均值和等级</h3>
-              <p>瞬时数值会随环境变化波动，平均值、最低值、最高值和亮度等级更适合用于判断。</p>
+              <h3>优先看平均照度和学习等级</h3>
+              <p>首页会显示最低照度、最高照度和平均照度，并按平均照度自动标记需改善、基础达标、较优学习或明亮充足。</p>
             </div>
           </article>
           <article class="step">
             <div>
-              <h3>对比时保持同一姿势</h3>
-              <p>比较两个位置时尽量使用同一设备、相同高度、相同角度和相近停留时间。</p>
+              <h3>阅读结果建议后再调整灯光</h3>
+              <p>测完后查看结果解读和建议，例如增加补光、检查阴影、避免纸面反光或调整灯位角度。</p>
             </div>
+          </article>
+        </div>
+        <div class="notice spaced">
+          <strong>首页等级说明</strong>
+          <p>
+            LuxTest 当前按平均照度划分为四档：需改善（低于 300 lx）、基础达标（300-499 lx）、较优学习（500-749 lx）和明亮充足（750 lx 及以上）。
+          </p>
+        </div>
+      </section>
+
+      <section class="section-band" aria-labelledby="homepage-title">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">Home Screen</span>
+            <h2 id="homepage-title">新版首页显示哪些信息</h2>
+          </div>
+          <p>
+            首页把检测、统计、等级和建议集中在同一条流程里，适合家长快速判断孩子当前学习位置是否需要调整照明。
+          </p>
+        </div>
+        <div class="grid three">
+          <article class="tile">
+            <strong>仪表盘读数</strong>
+            <p>中心大数字显示当前 lx 或检测结束后的桌面平均照度，按钮会在开始检测、检测中、重新检测之间切换。</p>
+          </article>
+          <article class="tile">
+            <strong>统计卡片</strong>
+            <p>下方展示最低照度、最高照度、平均照度，并提示“建议以平均照度作为主要判断依据”。</p>
+          </article>
+          <article class="tile">
+            <strong>结果解读</strong>
+            <p>根据平均照度自动给出是否适合孩子学习、需要怎样补光、是否要关注反光或刺眼等建议。</p>
+          </article>
+          <article class="tile">
+            <strong>iPhone 详情</strong>
+            <p>iPhone 端可展开近似 lx 详情，查看平滑近似值、即时近似值、置信度、稳定性、样本数、ISO 和 EV100。</p>
+          </article>
+          <article class="tile">
+            <strong>异常提示</strong>
+            <p>采集时间过短、环境过暗或设备不支持时，首页会显示对应提示，帮助用户重新检测或更换设备。</p>
+          </article>
+          <article class="tile">
+            <strong>自动保存</strong>
+            <p>停止采样后会生成一条本地测试记录，后续可到导出页查看、删除或导出 JSON/CSV。</p>
           </article>
         </div>
       </section>
@@ -191,7 +235,7 @@
           <article class="tile">
             <strong>iPhone</strong>
             <p>
-              通过后置相机曝光参数换算近似 lux，适合趋势观察和粗略场景比较，不等同于专业照度计。
+              通过后置相机曝光参数换算近似 lx，适合趋势观察和粗略场景比较，不等同于专业照度计。
             </p>
           </article>
         </div>
@@ -215,7 +259,7 @@
           <details>
             <summary>为什么刚开始采集时数值变化比较快？</summary>
             <p>
-              设备需要短暂适应当前环境。尤其在 iPhone 上，自动曝光会持续调整，因此建议先保持稳定几秒，再观察平均值和等级。
+              设备需要短暂适应当前环境。尤其在 iPhone 上，自动曝光会持续调整，因此建议先保持稳定几秒，再观察平均照度和学习等级。
             </p>
           </details>
           <details>
@@ -227,13 +271,13 @@
           <details>
             <summary>历史记录会上传到服务器吗？</summary>
             <p>
-              不会默认上传。测量历史、校准参数等数据主要保存在你的设备本地；导出只在你主动触发系统分享或复制时发生。
+              不会默认上传。测试历史、校准参数等数据主要保存在你的设备本地；导出只在你主动触发系统分享或复制时发生。
             </p>
           </details>
           <details>
             <summary>如何删除测量记录？</summary>
             <p>
-              你可以在 App 内删除单条记录或清空全部本地记录。卸载 App 通常也会移除由 App 保存在本地的数据。
+              你可以在 App 内删除单条测试记录或清空全部本地记录。卸载 App 通常也会移除由 App 保存在本地的数据。
             </p>
           </details>
           <details>

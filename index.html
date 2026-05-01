@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>LuxTest - 环境光照度快速测量工具</title>
+    <title>LuxTest - 学习环境照度检测工具</title>
     <meta
       name="description"
-      content="LuxTest 是一款用于快速测量或估算环境光照度的移动端工具，支持 lux 数值、亮度等级、本地历史记录与主动导出。"
+      content="LuxTest 用于检测当前书桌是否适合孩子阅读和写字，支持桌面平均照度、最低/最高/平均统计、学习照度等级、结果建议与本地记录导出。"
     />
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#f6f8f3" />
@@ -16,10 +16,10 @@
     <link rel="stylesheet" href="./styles.css" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="LuxTest" />
-    <meta property="og:title" content="LuxTest - 环境光照度快速测量工具" />
+    <meta property="og:title" content="LuxTest - 学习环境照度检测工具" />
     <meta
       property="og:description"
-      content="快速查看当前环境的 lux 数值、亮度等级与本地测量历史。"
+      content="检测书桌照度是否适合孩子学习，查看平均照度、等级判断与本地测试记录。"
     />
     <meta property="og:url" content="https://xywang279279-afk.github.io/luxTest-pages/" />
     <meta
@@ -35,7 +35,7 @@
         "operatingSystem": "iOS, Android",
         "softwareVersion": "1.0.2",
         "url": "https://xywang279279-afk.github.io/luxTest-pages/",
-        "description": "LuxTest 是一款用于快速测量或估算环境光照度的移动端工具，支持 lux 数值、亮度等级、本地历史记录与主动导出。",
+        "description": "LuxTest 用于检测当前书桌是否适合孩子阅读和写字，支持桌面平均照度、最低/最高/平均统计、学习照度等级、结果建议与本地记录导出。",
         "offers": {
           "@type": "Offer",
           "price": "0",
@@ -50,7 +50,7 @@
     <header class="site-header" aria-label="站点导航">
       <a class="brand" href="./index.html" aria-label="LuxTest 首页">
         <img src="./assets/app-icon.png" alt="" width="42" height="42" />
-        <span><strong>LuxTest</strong>环境光照度工具</span>
+        <span><strong>LuxTest</strong>学习环境照度检测</span>
       </a>
       <nav class="site-nav" aria-label="主要页面">
         <a href="./index.html" aria-current="page">首页</a>
@@ -62,10 +62,10 @@
     <main id="main-content" class="site-main">
       <section class="hero" aria-labelledby="hero-title">
         <div>
-          <span class="eyebrow">Ambient Light Meter</span>
+          <span class="eyebrow">Study Light Check</span>
           <h1 id="hero-title">LuxTest</h1>
           <p class="lead">
-            快速测量环境光照度，查看 lux 数值、亮度等级、本地历史记录与导出数据。适合日常判断阅读、办公、拍摄和展示环境是否足够明亮。
+            检测当前书桌是否适合孩子阅读和写字。把手机放到孩子作业本位置，开始检测后保持稳定，首页会给出桌面平均照度、学习照度等级和调整建议。
           </p>
           <div class="hero-actions" aria-label="常用链接">
             <a class="button" href="./support.html">查看支持中心</a>
@@ -74,6 +74,7 @@
           <ul class="hero-notes" aria-label="产品要点">
             <li>无需注册账号</li>
             <li>本地优先处理</li>
+            <li>学习照度等级</li>
             <li>iOS / Android</li>
             <li>版本 1.0.2</li>
           </ul>
@@ -83,23 +84,23 @@
           <div class="app-plate">
             <img src="./assets/app-icon.png" alt="LuxTest App 图标" width="92" height="92" />
             <div>
-              <strong>环境光快速判断</strong>
-              <span>对准被测区域，保持几秒稳定，优先查看平均值和等级。</span>
+              <strong>书桌照度快速检测</strong>
+              <span>放到孩子作业本位置，持续采集 2-3 秒，优先查看平均照度和等级。</span>
             </div>
           </div>
           <div class="meter-card">
             <div class="meter-header">
-              <span>Current Light</span>
-              <span>Stable</span>
+              <span>Study Desk</span>
+              <span>2-3s</span>
             </div>
             <div class="meter-reading">
-              <div class="lux-number">482</div>
-              <div class="lux-unit">Lux</div>
+              <div class="lux-number">620</div>
+              <div class="lux-unit">lx</div>
               <div class="meter-scale" aria-hidden="true"></div>
             </div>
             <div class="meter-footer">
-              <span>平均值 476</span>
-              <span>适合阅读与办公</span>
+              <span>平均照度 620 lx</span>
+              <span>较优学习</span>
             </div>
           </div>
         </div>
@@ -109,24 +110,32 @@
         <div class="section-heading">
           <div>
             <span class="eyebrow">What It Does</span>
-            <h2 id="features-title">为日常光照判断保留刚刚好的信息</h2>
+            <h2 id="features-title">围绕孩子学习场景设计的首页</h2>
           </div>
           <p>
-            LuxTest 面向快速参考和趋势观察，不替代专业照度计。它帮助你用同一设备、同一姿势比较不同位置的明暗变化。
+            新版首页不只是显示瞬时数值，而是围绕“当前书桌是否适合学习”组织信息：先检测，再看统计，再给出等级和建议。
           </p>
         </div>
         <div class="grid three">
           <article class="tile">
-            <strong>实时读数</strong>
-            <p>Android 优先读取环境光传感器；iPhone 通过相机曝光参数换算近似 lux。</p>
+            <strong>一键检测与重测</strong>
+            <p>首页仪表盘提供“开始检测 / 检测中 / 重新检测”状态，检测时建议保持手机稳定 2-3 秒。</p>
           </article>
           <article class="tile">
-            <strong>等级判断</strong>
-            <p>将数值转化为更容易理解的亮度区间，辅助判断当前场景是否过暗、适中或过亮。</p>
+            <strong>最低 / 最高 / 平均</strong>
+            <p>每次采样会展示最低照度、最高照度和平均照度，并明确提示优先用平均照度判断。</p>
           </article>
           <article class="tile">
-            <strong>本地历史</strong>
-            <p>停止采样后保存最近测量会话，可查看平均值、最高值、最低值和持续时间。</p>
+            <strong>四档学习照度等级</strong>
+            <p>按平均照度分为需改善、基础达标、较优学习、明亮充足，并生成对应的结果解读和调整建议。</p>
+          </article>
+          <article class="tile">
+            <strong>iPhone 估算详情</strong>
+            <p>iPhone 可展开查看平滑近似 lx、即时近似 lx、置信度、稳定性、样本数、ISO 和 EV100。</p>
+          </article>
+          <article class="tile">
+            <strong>本地记录与导出</strong>
+            <p>停止采样后生成本地测试记录，可在导出页查看统计结果，并按单条导出 JSON 或 CSV。</p>
           </article>
         </div>
       </section>
@@ -145,7 +154,7 @@
           <article class="resource-card">
             <div>
               <strong>支持中心</strong>
-              <p>包含使用建议、平台差异、常见问题、故障反馈方式和开发者联系方式。</p>
+              <p>包含新版首页检测流程、学习照度等级、平台差异、常见问题和开发者联系方式。</p>
             </div>
             <a class="button secondary" href="./support.html">打开支持中心</a>
           </article>

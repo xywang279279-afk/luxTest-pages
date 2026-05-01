@@ -6,7 +6,7 @@
     <title>LuxTest 隐私政策</title>
     <meta
       name="description"
-      content="LuxTest 隐私政策，说明环境光传感器、相机曝光参数、本地测量记录、主动导出、权限使用和联系方式。"
+      content="LuxTest 隐私政策，说明学习环境照度检测中的环境光传感器、相机曝光参数、本地测试记录、主动导出、权限使用和联系方式。"
     />
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#f6f8f3" />
@@ -22,7 +22,7 @@
     <meta property="og:title" content="LuxTest 隐私政策" />
     <meta
       property="og:description"
-      content="了解 LuxTest 如何处理传感器数据、相机曝光参数、本地历史记录和主动导出。"
+      content="了解 LuxTest 在学习环境检测中如何处理传感器数据、相机曝光参数、本地测试记录和主动导出。"
     />
     <meta
       property="og:url"
@@ -67,7 +67,7 @@
           <span class="eyebrow">Privacy Policy</span>
           <h1 id="privacy-title">LuxTest 隐私政策</h1>
           <p class="lead">
-            LuxTest 以本地处理和最少数据使用为原则。本政策说明 App 在测量或估算环境光照度时如何使用权限、传感器数据、本地记录和导出文件。
+            LuxTest 以本地处理和最少数据使用为原则。本政策说明 App 在检测书桌学习照度、估算近似 lx、生成等级建议时如何使用权限、传感器数据、本地记录和导出文件。
           </p>
         </div>
 
@@ -76,7 +76,7 @@
             <img src="./assets/app-icon.png" alt="LuxTest App 图标" width="92" height="92" />
             <div>
               <strong>本地优先</strong>
-              <span>无需注册账号；测量历史和校准参数主要保存在你的设备上。</span>
+              <span>无需注册账号；测试历史和校准参数主要保存在你的设备上。</span>
             </div>
           </div>
           <div class="policy-summary">
@@ -115,7 +115,7 @@
             <section id="overview" class="policy-section">
               <h2>1. 适用范围</h2>
               <p>
-                本隐私政策适用于 LuxTest 移动端应用及与其配套的公开支持页面。LuxTest 用于帮助用户快速测量或估算环境光照度，并提供亮度等级、本地历史记录和主动导出功能。
+                本隐私政策适用于 LuxTest 移动端应用及与其配套的公开支持页面。LuxTest 用于帮助用户检测当前书桌是否适合孩子阅读和写字，并提供桌面平均照度、学习照度等级、本地测试记录和主动导出功能。
               </p>
               <p>
                 本政策自 2026-05-01 起生效。若 App 后续接入新的数据处理方式、账号系统、云服务或第三方 SDK，本页面会同步更新。
@@ -126,19 +126,19 @@
               <h2>2. 我们处理哪些信息</h2>
               <ul>
                 <li>
-                  <strong>环境光传感器数据：</strong>在 Android 设备上，LuxTest 优先读取设备提供的环境光传感器数值，用于显示 lux 读数和计算统计结果。
+                  <strong>环境光传感器数据：</strong>在 Android 设备上，LuxTest 优先读取设备提供的环境光传感器数值，用于显示 lx 读数、计算最低/最高/平均照度，并生成学习照度等级。
                 </li>
                 <li>
-                  <strong>相机曝光参数：</strong>在 iPhone 上，LuxTest 可能请求相机权限，并使用后置相机的曝光参数换算近似 lux。App 不会在应用逻辑中保存照片、视频或图像文件，也不会默认上传图像内容。
+                  <strong>相机曝光参数：</strong>在 iPhone 上，LuxTest 可能请求相机权限，并使用后置相机的曝光参数换算近似 lx。首页可展示平滑近似值、即时近似值、置信度、稳定性、样本数、ISO 和 EV100。App 不会在应用逻辑中保存照片、视频或图像文件，也不会默认上传图像内容。
                 </li>
                 <li>
-                  <strong>本地测量记录：</strong>停止采样后，App 会在设备本地保存最近的测量会话，包括时间、读数、平均值、最高值、最低值、测量来源和持续时间等信息。
+                  <strong>本地测试记录：</strong>停止采样后，App 会在设备本地保存最近的测试会话，包括时间、读数、平均值、最高值、最低值、测量来源和持续时间等信息。
                 </li>
                 <li>
                   <strong>校准参数：</strong>Android 端可保存用户设置的校准系数，用于修正后续传感器读数。
                 </li>
                 <li>
-                  <strong>导出内容：</strong>当你主动导出 JSON 或 CSV 时，导出文件会包含相应测量会话的读数、时间戳、统计结果和来源信息。
+                  <strong>导出内容：</strong>当你主动导出 JSON 或 CSV 时，导出文件会包含相应测试会话的读数、时间戳、统计结果和来源信息。
                 </li>
               </ul>
             </section>
@@ -146,10 +146,11 @@
             <section id="use" class="policy-section">
               <h2>3. 这些信息如何被使用</h2>
               <ul>
-                <li>展示当前环境光照度或近似 lux 值。</li>
-                <li>计算本次采样的平均值、最高值、最低值和持续时间。</li>
-                <li>判断亮度等级，并帮助用户进行日常场景参考。</li>
-                <li>保存本地历史记录和校准偏好，减少重复设置。</li>
+                <li>展示当前桌面照度或 iPhone 近似 lx 值。</li>
+                <li>计算本次检测的最低照度、最高照度、平均照度和持续时间。</li>
+                <li>按平均照度生成需改善、基础达标、较优学习或明亮充足等学习照度等级。</li>
+                <li>生成结果解读和灯光调整建议，例如补光、减少阴影、检查纸面反光或调整灯位。</li>
+                <li>保存本地测试记录和校准偏好，减少重复设置。</li>
                 <li>在用户主动触发时生成可分享或可复制的导出内容。</li>
               </ul>
             </section>
@@ -157,10 +158,10 @@
             <section id="storage" class="policy-section">
               <h2>4. 本地存储与删除</h2>
               <p>
-                LuxTest 默认不要求账号注册，也不以开发者服务器为基础保存测量记录。测量历史和校准参数主要通过设备本地存储保存。
+                LuxTest 默认不要求账号注册，也不以开发者服务器为基础保存测试记录。测试历史和校准参数主要通过设备本地存储保存。
               </p>
               <p>
-                App 当前仅保留最近的本地测量会话，用于避免历史记录无限增长。你可以在 App 内删除单条记录或清空全部本地记录；卸载 App 通常也会移除由 App 保存在本地的数据。
+                App 当前仅保留最近的本地测试会话，用于避免历史记录无限增长。你可以在 App 内删除单条记录或清空全部本地记录；卸载 App 通常也会移除由 App 保存在本地的数据。
               </p>
             </section>
 
@@ -168,7 +169,7 @@
               <h2>5. 权限说明</h2>
               <ul>
                 <li>
-                  <strong>相机权限：</strong>iPhone 端用于读取曝光参数并估算环境亮度。拒绝权限后，相关估算功能可能无法使用。
+                  <strong>相机权限：</strong>iPhone 端用于读取曝光参数并估算近似 lx。拒绝权限后，相关估算功能可能无法使用。
                 </li>
                 <li>
                   <strong>传感器访问：</strong>Android 端用于读取环境光传感器。若设备不支持相关传感器，App 会提示不可用或结果受限。
