@@ -2,471 +2,198 @@
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LuxTest Pages</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LuxTest - 环境光照度快速测量工具</title>
     <meta
       name="description"
-      content="LuxTest GitHub Pages 首页，包含支持中心、隐私政策和 GitHub Pages 发布说明。"
+      content="LuxTest 是一款用于快速测量或估算环境光照度的移动端工具，支持 lux 数值、亮度等级、本地历史记录与主动导出。"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Newsreader:opsz,wght@6..72,500;6..72,700&display=swap"
-      rel="stylesheet"
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#f6f8f3" />
+    <link rel="canonical" href="https://xywang279279-afk.github.io/luxTest-pages/" />
+    <link rel="icon" href="./assets/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png" />
+    <link rel="stylesheet" href="./styles.css" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="LuxTest" />
+    <meta property="og:title" content="LuxTest - 环境光照度快速测量工具" />
+    <meta
+      property="og:description"
+      content="快速查看当前环境的 lux 数值、亮度等级与本地测量历史。"
     />
-    <style>
-      :root {
-        --bg: #06111b;
-        --bg-soft: rgba(9, 23, 35, 0.84);
-        --panel: rgba(12, 33, 48, 0.86);
-        --panel-strong: rgba(10, 29, 44, 0.94);
-        --line: rgba(136, 208, 255, 0.2);
-        --line-strong: rgba(136, 208, 255, 0.34);
-        --text: #eff8ff;
-        --text-soft: #b8cede;
-        --accent: #7ad8ff;
-        --accent-soft: #b4f2ff;
-        --success: #9af2d5;
-        --warning: #ffd58a;
-        --shadow: 0 24px 60px rgba(0, 0, 0, 0.32);
-        --radius: 28px;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      body {
-        margin: 0;
-        min-height: 100vh;
-        font-family: "Manrope", sans-serif;
-        color: var(--text);
-        background:
-          radial-gradient(circle at 0% 0%, rgba(122, 216, 255, 0.14), transparent 30%),
-          radial-gradient(circle at 100% 0%, rgba(154, 242, 213, 0.12), transparent 28%),
-          linear-gradient(180deg, #07131e 0%, #081521 45%, #03090f 100%);
-      }
-
-      body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        background-image:
-          linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-        background-size: 36px 36px;
-        mask-image: radial-gradient(circle at center, black 54%, transparent 100%);
-        pointer-events: none;
-      }
-
-      .shell {
-        position: relative;
-        width: min(1120px, calc(100% - 32px));
-        margin: 0 auto;
-        padding: 32px 0 56px;
-      }
-
-      .topbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 16px;
-        margin-bottom: 18px;
-        color: var(--text-soft);
-        font-size: 14px;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-      }
-
-      .topnav {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 14px;
-      }
-
-      .topbar a {
-        color: var(--accent-soft);
-        text-decoration: none;
-      }
-
-      .hero {
-        overflow: hidden;
-        position: relative;
-        border: 1px solid var(--line);
-        border-radius: calc(var(--radius) + 8px);
-        background:
-          linear-gradient(145deg, rgba(18, 48, 71, 0.9), rgba(7, 18, 28, 0.98)),
-          var(--panel-strong);
-        box-shadow: var(--shadow);
-      }
-
-      .hero::before,
-      .hero::after {
-        content: "";
-        position: absolute;
-        border-radius: 999px;
-        filter: blur(20px);
-        opacity: 0.5;
-      }
-
-      .hero::before {
-        width: 220px;
-        height: 220px;
-        right: -60px;
-        top: -40px;
-        background: rgba(122, 216, 255, 0.22);
-      }
-
-      .hero::after {
-        width: 160px;
-        height: 160px;
-        left: -30px;
-        bottom: -50px;
-        background: rgba(154, 242, 213, 0.14);
-      }
-
-      .hero-grid {
-        display: grid;
-        grid-template-columns: minmax(0, 1.45fr) minmax(300px, 0.8fr);
-      }
-
-      .hero-copy,
-      .hero-side {
-        padding: 32px;
-      }
-
-      .hero-copy {
-        border-right: 1px solid var(--line);
-      }
-
-      .eyebrow {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 18px;
-        color: var(--accent-soft);
-        font-size: 12px;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-      }
-
-      .eyebrow::before {
-        content: "";
-        width: 34px;
-        height: 1px;
-        background: currentColor;
-      }
-
-      h1,
-      h2,
-      h3 {
-        margin: 0;
-        font-family: "Newsreader", serif;
-        letter-spacing: -0.03em;
-      }
-
-      h1 {
-        max-width: 10ch;
-        font-size: clamp(44px, 7vw, 80px);
-        line-height: 0.94;
-      }
-
-      .lead {
-        max-width: 620px;
-        margin: 18px 0 0;
-        color: var(--text-soft);
-        font-size: 17px;
-        line-height: 1.8;
-      }
-
-      .hero-side {
-        display: grid;
-        align-content: space-between;
-        gap: 18px;
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent);
-      }
-
-      .badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        width: fit-content;
-        padding: 8px 12px;
-        border: 1px solid var(--line-strong);
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.04);
-        color: var(--accent-soft);
-        font-size: 12px;
-        font-weight: 700;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-      }
-
-      .stat-card {
-        padding: 18px;
-        border: 1px solid var(--line);
-        border-radius: 22px;
-        background: rgba(255, 255, 255, 0.03);
-      }
-
-      .stat-label {
-        margin-bottom: 10px;
-        color: var(--text-soft);
-        font-size: 12px;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-      }
-
-      .stat-value {
-        font-size: 24px;
-        font-weight: 800;
-      }
-
-      .content-grid {
-        display: grid;
-        grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
-        gap: 18px;
-        margin-top: 18px;
-      }
-
-      .panel {
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        background: var(--bg-soft);
-        box-shadow: var(--shadow);
-      }
-
-      .panel-header {
-        padding: 26px 28px 0;
-      }
-
-      .panel-body {
-        padding: 20px 28px 28px;
-      }
-
-      .panel-header p,
-      .panel-body p,
-      .panel-body li,
-      .muted {
-        color: var(--text-soft);
-        line-height: 1.8;
-      }
-
-      .panel-header p {
-        margin: 12px 0 0;
-      }
-
-      h2 {
-        font-size: 30px;
-      }
-
-      h3 {
-        font-size: 20px;
-      }
-
-      .link-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 16px;
-      }
-
-      .link-card {
-        display: grid;
-        gap: 12px;
-        padding: 20px;
-        border: 1px solid var(--line);
-        border-radius: 22px;
-        background: rgba(255, 255, 255, 0.03);
-      }
-
-      .link-card strong {
-        font-size: 18px;
-      }
-
-      .link-card a {
-        width: fit-content;
-        padding: 10px 14px;
-        border: 1px solid var(--line-strong);
-        border-radius: 999px;
-        color: var(--accent-soft);
-        text-decoration: none;
-        font-size: 14px;
-        font-weight: 700;
-      }
-
-      ul {
-        margin: 0;
-        padding-left: 18px;
-      }
-
-      li + li {
-        margin-top: 10px;
-      }
-
-      .note {
-        margin-top: 16px;
-        padding: 18px;
-        border: 1px solid rgba(255, 213, 138, 0.3);
-        border-radius: 20px;
-        background: rgba(255, 213, 138, 0.08);
-      }
-
-      .note strong {
-        display: block;
-        margin-bottom: 8px;
-        color: var(--warning);
-        font-size: 13px;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-      }
-
-      code {
-        padding: 2px 7px;
-        border: 1px solid var(--line);
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.04);
-        color: var(--accent-soft);
-        font-family: inherit;
-        font-size: 13px;
-      }
-
-      footer {
-        margin-top: 18px;
-        padding: 18px 4px 0;
-        color: rgba(184, 206, 222, 0.84);
-        font-size: 13px;
-        line-height: 1.7;
-      }
-
-      @media (max-width: 900px) {
-        .hero-grid,
-        .content-grid,
-        .link-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .hero-copy {
-          border-right: 0;
-          border-bottom: 1px solid var(--line);
-        }
-
-        .topbar {
-          flex-direction: column;
-          align-items: flex-start;
+    <meta property="og:url" content="https://xywang279279-afk.github.io/luxTest-pages/" />
+    <meta
+      property="og:image"
+      content="https://xywang279279-afk.github.io/luxTest-pages/assets/app-icon.png"
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "LuxTest",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "iOS, Android",
+        "softwareVersion": "1.0.2",
+        "url": "https://xywang279279-afk.github.io/luxTest-pages/",
+        "description": "LuxTest 是一款用于快速测量或估算环境光照度的移动端工具，支持 lux 数值、亮度等级、本地历史记录与主动导出。",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
         }
       }
-
-      @media (max-width: 640px) {
-        .shell {
-          width: min(100% - 20px, 1120px);
-          padding-top: 18px;
-          padding-bottom: 32px;
-        }
-
-        .hero-copy,
-        .hero-side,
-        .panel-header,
-        .panel-body {
-          padding-left: 20px;
-          padding-right: 20px;
-        }
-
-        h1 {
-          font-size: 42px;
-        }
-
-        h2 {
-          font-size: 24px;
-        }
-      }
-    </style>
+    </script>
   </head>
   <body>
-    <main class="shell">
-      <div class="topbar">
-        <span>LuxTest / GitHub Pages</span>
-        <div class="topnav">
-          <a href="./support.html">支持中心</a>
-          <a href="./privacy-policy.html">隐私政策</a>
-        </div>
-      </div>
+    <a class="skip-link" href="#main-content">跳到主要内容</a>
 
-      <section class="hero">
-        <div class="hero-grid">
-          <div class="hero-copy">
-            <span class="eyebrow">Docs Ready</span>
-            <h1>LuxTest Pages 首页</h1>
-            <p class="lead">
-              这个 <code>/docs</code> 目录已经整理成 GitHub Pages 可直接发布的结构。把仓库推到 GitHub
-              后，在仓库设置中选择 <code>Deploy from a branch</code>，分支选 <code>main</code>，目录选
-              <code>/docs</code>，就可以直接上线。
-            </p>
+    <header class="site-header" aria-label="站点导航">
+      <a class="brand" href="./index.html" aria-label="LuxTest 首页">
+        <img src="./assets/app-icon.png" alt="" width="42" height="42" />
+        <span><strong>LuxTest</strong>环境光照度工具</span>
+      </a>
+      <nav class="site-nav" aria-label="主要页面">
+        <a href="./index.html" aria-current="page">首页</a>
+        <a href="./support.html">支持中心</a>
+        <a href="./privacy-policy.html">隐私政策</a>
+      </nav>
+    </header>
+
+    <main id="main-content" class="site-main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div>
+          <span class="eyebrow">Ambient Light Meter</span>
+          <h1 id="hero-title">LuxTest</h1>
+          <p class="lead">
+            快速测量环境光照度，查看 lux 数值、亮度等级、本地历史记录与导出数据。适合日常判断阅读、办公、拍摄和展示环境是否足够明亮。
+          </p>
+          <div class="hero-actions" aria-label="常用链接">
+            <a class="button" href="./support.html">查看支持中心</a>
+            <a class="button secondary" href="./privacy-policy.html">阅读隐私政策</a>
           </div>
-          <aside class="hero-side">
-            <span class="badge">GitHub Pages Ready</span>
-            <div class="stat-card">
-              <div class="stat-label">主页地址</div>
-              <div class="stat-value">/docs/index.html</div>
+          <ul class="hero-notes" aria-label="产品要点">
+            <li>无需注册账号</li>
+            <li>本地优先处理</li>
+            <li>iOS / Android</li>
+            <li>版本 1.0.2</li>
+          </ul>
+        </div>
+
+        <div class="hero-visual" aria-label="LuxTest 测量界面示意">
+          <div class="app-plate">
+            <img src="./assets/app-icon.png" alt="LuxTest App 图标" width="92" height="92" />
+            <div>
+              <strong>环境光快速判断</strong>
+              <span>对准被测区域，保持几秒稳定，优先查看平均值和等级。</span>
             </div>
-            <div class="stat-card">
-              <div class="stat-label">公开页面</div>
-              <div class="stat-value">支持中心 / 隐私政策</div>
+          </div>
+          <div class="meter-card">
+            <div class="meter-header">
+              <span>Current Light</span>
+              <span>Stable</span>
             </div>
-          </aside>
+            <div class="meter-reading">
+              <div class="lux-number">482</div>
+              <div class="lux-unit">Lux</div>
+              <div class="meter-scale" aria-hidden="true"></div>
+            </div>
+            <div class="meter-footer">
+              <span>平均值 476</span>
+              <span>适合阅读与办公</span>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section class="content-grid">
-        <article class="panel">
-          <div class="panel-header">
+      <section class="section-band" aria-labelledby="features-title">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">What It Does</span>
+            <h2 id="features-title">为日常光照判断保留刚刚好的信息</h2>
+          </div>
+          <p>
+            LuxTest 面向快速参考和趋势观察，不替代专业照度计。它帮助你用同一设备、同一姿势比较不同位置的明暗变化。
+          </p>
+        </div>
+        <div class="grid three">
+          <article class="tile">
+            <strong>实时读数</strong>
+            <p>Android 优先读取环境光传感器；iPhone 通过相机曝光参数换算近似 lux。</p>
+          </article>
+          <article class="tile">
+            <strong>等级判断</strong>
+            <p>将数值转化为更容易理解的亮度区间，辅助判断当前场景是否过暗、适中或过亮。</p>
+          </article>
+          <article class="tile">
+            <strong>本地历史</strong>
+            <p>停止采样后保存最近测量会话，可查看平均值、最高值、最低值和持续时间。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-band" aria-labelledby="resources-title">
+        <div class="section-heading">
+          <div>
             <span class="eyebrow">Public Pages</span>
-            <h2>现在可以直接发布的页面</h2>
-            <p>这两张页面已经是独立 HTML，部署后可以直接填到 App Store Connect。</p>
+            <h2 id="resources-title">公开支持与隐私页面</h2>
           </div>
-          <div class="panel-body">
-            <div class="link-grid">
-              <div class="link-card">
-                <strong>支持中心</strong>
-                <p>用于填写 `Support URL`，包含联系邮箱、常见问题和基础使用说明。</p>
-                <a href="./support.html">打开 support.html</a>
-              </div>
-              <div class="link-card">
-                <strong>隐私政策</strong>
-                <p>用于填写 `Privacy Policy URL`，包含本地存储、权限说明和隐私声明。</p>
-                <a href="./privacy-policy.html">打开 privacy-policy.html</a>
-              </div>
+          <p>
+            以下页面可直接作为应用商店审核与用户访问所需的公开链接。页面内容已去除占位提示，并与当前 App 数据流保持一致。
+          </p>
+        </div>
+        <div class="grid two">
+          <article class="resource-card">
+            <div>
+              <strong>支持中心</strong>
+              <p>包含使用建议、平台差异、常见问题、故障反馈方式和开发者联系方式。</p>
             </div>
-          </div>
-        </article>
-
-        <aside class="panel">
-          <div class="panel-header">
-            <span class="eyebrow">Checklist</span>
-            <h2>上线前最后检查</h2>
-          </div>
-          <div class="panel-body">
-            <ul>
-              <li>确认支持邮箱和隐私邮箱都是真实可用的。</li>
-              <li>确认页面上的开发者署名与 App Store 显示名称一致。</li>
-              <li>确认日期、隐私描述和最终二进制的数据流保持一致。</li>
-              <li>发布后打开线上链接，检查手机端是否能正常访问。</li>
-            </ul>
-
-            <div class="note">
-              <strong>提示</strong>
-              <p class="muted">
-                如果仓库名不是用户主页仓库，GitHub Pages 地址通常会带上仓库名，例如
-                <code>https://YOUR_NAME.github.io/REPO_NAME/</code>。
-              </p>
+            <a class="button secondary" href="./support.html">打开支持中心</a>
+          </article>
+          <article class="resource-card">
+            <div>
+              <strong>隐私政策</strong>
+              <p>说明相机曝光参数、环境光传感器、本地存储、主动导出和权限使用方式。</p>
             </div>
-          </div>
-        </aside>
+            <a class="button secondary" href="./privacy-policy.html">打开隐私政策</a>
+          </article>
+        </div>
       </section>
 
-      <footer>
-        这个首页只是 GitHub Pages 的入口页。真正填给 App Store Connect 的仍然建议是
-        <code>/support.html</code> 和 <code>/privacy-policy.html</code> 两个公开链接。
-      </footer>
+      <section class="section-band" aria-labelledby="release-title">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">Publishing</span>
+            <h2 id="release-title">GitHub Pages 发布信息</h2>
+          </div>
+          <p>
+            当前 <code>docs</code> 目录包含完整静态资源：HTML、共享 CSS、站点图标和 App 图标。部署时可选择 GitHub Pages 的
+            <code>/docs</code> 目录作为发布源。
+          </p>
+        </div>
+        <div class="legal-line" aria-label="站点元信息">
+          <div>
+            <span class="label">Support URL</span>
+            <span class="value">/support.html</span>
+          </div>
+          <div>
+            <span class="label">Privacy Policy URL</span>
+            <span class="value">/privacy-policy.html</span>
+          </div>
+          <div>
+            <span class="label">Contact</span>
+            <span class="value">xywang279279@gmail.com</span>
+          </div>
+          <div>
+            <span class="label">Updated</span>
+            <span class="value">2026-05-01</span>
+          </div>
+        </div>
+      </section>
     </main>
+
+    <footer class="site-footer">
+      <span>© 2026 Wang Xiaoyan. LuxTest.</span>
+      <span><a href="mailto:xywang279279@gmail.com">xywang279279@gmail.com</a></span>
+    </footer>
   </body>
 </html>
